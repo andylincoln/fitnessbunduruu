@@ -1,0 +1,76 @@
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:weightSum="1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout"
+    android:background="@android:color/background_light"
+    android:clickable="false">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:text="@string/categoryPrompt"
+        android:layout_marginTop="45dp"
+        android:textIsSelectable="false"
+        android:textStyle="italic" />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/CategoryGroup">
+
+        <RadioButton
+            android:drawableRight="@drawable/ic_cardio"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cardio"
+            android:id="@+id/buttonCardio"
+            android:typeface="sans"
+            android:checked="false"
+            android:textSize="40sp"
+            android:layout_gravity="center_horizontal"
+            android:enabled="true"
+            android:textColor="@android:color/holo_orange_dark"
+            android:singleLine="true"
+            android:layout_marginTop="96dp"
+            />
+
+        <RadioButton
+            android:drawableRight="@drawable/ic_strength"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strength"
+            android:id="@+id/buttonStrength"
+            android:typeface="sans"
+            android:textSize="40sp"
+            android:layout_gravity="center_horizontal"
+            android:enabled="true"
+            android:textColor="@android:color/holo_orange_dark"
+            />
+
+        <RadioButton
+            android:drawableRight="@drawable/ic_random"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:text="@string/random"
+            android:id="@+id/buttonRandom"
+            android:layout_gravity="center_horizontal"
+            android:typeface="sans"
+            android:textSize="40sp"
+            android:enabled="true"
+            android:textColor="@android:color/holo_orange_dark"
+            />
+    </RadioGroup>
+
+</TableLayout>

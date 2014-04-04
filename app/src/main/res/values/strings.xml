@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Fitness Bunduruu</string>
+    <string name="exercise">Exercise</string>
+	<string name="button_statistics">Statistics</string>
+	<string name="action_settings">Settings</string>
+
+
+    <!--Main Activity-->
+    <string name="categoryPrompt">Choose a category</string>
+
+    <!--Exercise Activity-->
+    <string name="exercisePrompt">Choose your exercise</string>
+
+
+    <!-- Standalone for access by all-->
+    <string name="cardio">Cardio</string>
+    <string name="strength">Strength</string>
+    <string name="random">Random</string>
+
+
+    <!-- Array for random generation -->
+    <string-array name="categories">
+        <item name="Cardio">Cardio</item>
+        <item name="Strength">Strength</item>
+    </string-array>
+
+</resources>
