@@ -26,4 +26,20 @@
         <item name="Strength">Strength</item>
     </string-array>
 
+    <!-- Exercises String Arrays for Cardio-->
+
+    <string-array name="CardioCategory">
+        <item name="Jog">Jog</item>
+        <item name="Run">Run</item>
+    </string-array>
+
+    <!-- Exercises String Arrays for Strength-->
+
+    <string-array name="StrengthCategory">
+        <item name="FullBody">Full Body</item>
+        <item name="UpperBody">Upper body</item>
+        <item name="LowerBody">Lower body</item>
+        <item name="Core">Core</item>
+    </string-array>
+
 </resources>
