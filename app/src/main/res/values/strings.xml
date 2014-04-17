@@ -30,7 +30,7 @@
 
     <string-array name="CardioCategory">
         <item name="Jog">Jog</item>
-        <item name="Run">Run</item>
+        <item name="Sprint">Sprint</item>
     </string-array>
 
     <!-- Exercises String Arrays for Strength-->
