@@ -59,7 +59,7 @@
             android:textColor="@android:color/holo_orange_dark"
             />
 
-        <RadioButton
+        <!--RadioButton
             android:drawableRight="@drawable/ic_random"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:textSize="40sp"
             android:enabled="true"
             android:textColor="@android:color/holo_orange_dark"
-            />
+            /-->
     </RadioGroup>
 
 </TableLayout>
