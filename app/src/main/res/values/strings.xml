@@ -30,17 +30,19 @@
     <!-- Exercises String Arrays for Cardio-->
 
     <string-array name="CardioCategory">
-        <item name="Jog">Jog</item>
+        <item name="Running">Running</item>
         <item name="Sprint">Sprint</item>
+        <item name="Treadmill">Treadmill</item>
+        <item name="JumpRope">Jump Rope</item>
     </string-array>
 
     <!-- Exercises String Arrays for Strength-->
 
     <string-array name="StrengthCategory">
-        <item name="FullBody">Full Body</item>
-        <item name="UpperBody">Upper body</item>
-        <item name="LowerBody">Lower body</item>
-        <item name="Core">Core</item>
+        <item name="PushUps">Push ups</item>
+        <item name="Pull Ups">Pull Ups</item>
+        <item name="Weights">Weights</item>
+        <item name="Large Weights">Large Weights</item>
     </string-array>
 
 </resources>
