@@ -3,6 +3,7 @@
 
     <string name="app_name">Fitness Bunduruu</string>
     <string name="exercise">Exercise</string>
+    <string name="select">Select Exercises</string>
 	<string name="button_statistics">Statistics</string>
 	<string name="action_settings">Settings</string>
 

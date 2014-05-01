@@ -24,6 +24,10 @@
             android:name="com.example.fitnessbunduruu.ExerciseActivity"
             android:label="@string/exercise" >
         </activity>
+        <activity
+            android:name="com.example.fitnessbunduruu.SelectActivity"
+            android:label="@string/select" >
+        </activity>
     </application>
 
 </manifest>

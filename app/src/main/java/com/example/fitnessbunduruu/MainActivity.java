@@ -1,3 +1,5 @@
+/* MainActivity.java */
+
 package com.example.fitnessbunduruu;
 
 import android.app.Activity;
@@ -10,9 +12,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Random;
-
-
-// test
 
 public class MainActivity extends Activity {
 
@@ -45,7 +44,11 @@ public class MainActivity extends Activity {
                 switch (checkedId) {
                     case R.id.buttonCardio:
 
-                        intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+                        // In order to select multiple exercises for a group,
+                        // the main activity will start a group selection activity
+
+                        // intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+                        intent = new Intent(getApplicationContext(), SelectActivity.class);
                         intent.putExtra(extraTag, getResources().getString(R.string.cardio));
 
                         startActivity(intent);
@@ -53,12 +56,15 @@ public class MainActivity extends Activity {
                         break;
                     case R.id.buttonStrength:
 
-                        intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+                        // intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+                        intent = new Intent(getApplicationContext(), SelectActivity.class);
                         intent.putExtra(extraTag, getResources().getString(R.string.strength));
 
                         startActivity(intent);
 
                         break;
+
+                    /*
                     case R.id.buttonRandom:
 
                         String selectedCategory;
@@ -73,17 +79,12 @@ public class MainActivity extends Activity {
                         startActivity(intent);
 
                         break;
+                     */
                 }
             }
         });
 
         Log.i(TAG, "EA OnCreate");
-
-        //Log.i(TAG,rightNow.getTime().toString());
-        //Log.i(TAG,String.valueOf(rightNow.get(Calendar.DAY_OF_WEEK)));
-        //Log.i(TAG,String.valueOf(rightNow.get(Calendar.DAY_OF_MONTH)));
-
-
 
     }
 

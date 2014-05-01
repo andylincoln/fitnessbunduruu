@@ -32,7 +32,7 @@ public class ExerciseActivity extends Activity {
 
     private Button mStartStopButton;
 
-    // test
+    // test1
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
