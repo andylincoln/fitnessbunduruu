@@ -3,29 +3,18 @@
 package com.example.fitnessbunduruu;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import android.view.View;
-import android.widget.Toast;
-
-import java.util.Random;
 
 
 // test
@@ -93,32 +82,51 @@ public class SelectActivity extends Activity {
     }
 
     private void populateSelectGrid() {
+
         //ImageView Setup
+
+
+        // Setting to four each until we have more.
+        // Filling the screen with redundancies is just confusing for users
 
         imageViewArr[0] = (ImageView) findViewById(R.id.exerciseSelectImageView);
         imageViewArr[1] = (ImageView) findViewById(R.id.exerciseSelectImageView2);
         imageViewArr[2] = (ImageView) findViewById(R.id.exerciseSelectImageView3);
         imageViewArr[3] = (ImageView) findViewById(R.id.exerciseSelectImageView4);
-        imageViewArr[4] = (ImageView) findViewById(R.id.exerciseSelectImageView5);
-        imageViewArr[5] = (ImageView) findViewById(R.id.exerciseSelectImageView6);
-        imageViewArr[6] = (ImageView) findViewById(R.id.exerciseSelectImageView7);
-        imageViewArr[7] = (ImageView) findViewById(R.id.exerciseSelectImageView8);
-        imageViewArr[8] = (ImageView) findViewById(R.id.exerciseSelectImageView9);
-        imageViewArr[9] = (ImageView) findViewById(R.id.exerciseSelectImageView10);
+//        imageViewArr[4] = (ImageView) findViewById(R.id.exerciseSelectImageView5);
+//        imageViewArr[5] = (ImageView) findViewById(R.id.exerciseSelectImageView6);
+//        imageViewArr[6] = (ImageView) findViewById(R.id.exerciseSelectImageView7);
+//        imageViewArr[7] = (ImageView) findViewById(R.id.exerciseSelectImageView8);
+//        imageViewArr[8] = (ImageView) findViewById(R.id.exerciseSelectImageView9);
+//        imageViewArr[9] = (ImageView) findViewById(R.id.exerciseSelectImageView10);
 
-        //setting image resource
-        imageViewArr[0].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[1].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[2].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[3].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[4].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[5].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[6].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[7].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[8].setImageResource(R.drawable.ic_sprint);
-        imageViewArr[9].setImageResource(R.drawable.ic_sprint);
+        if (mCategory.equals("Strength")) {
 
+            //setting image resource
 
+            imageViewArr[0].setImageResource(R.drawable.ic_weights);
+            imageViewArr[1].setImageResource(R.drawable.ic_large_weights);
+            imageViewArr[2].setImageResource(R.drawable.ic_pull_ups);
+            imageViewArr[3].setImageResource(R.drawable.ic_pushups);
+//            imageViewArr[4].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[5].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[6].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[7].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[8].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[9].setImageResource(R.drawable.ic_sprint);
+
+        } else { // Cardio
+            imageViewArr[0].setImageResource(R.drawable.ic_sprint);
+            imageViewArr[1].setImageResource(R.drawable.ic_jump_rope);
+            imageViewArr[2].setImageResource(R.drawable.ic_treadmill);
+            imageViewArr[3].setImageResource(R.drawable.ic_running);
+//            imageViewArr[4].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[5].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[6].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[7].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[8].setImageResource(R.drawable.ic_sprint);
+//            imageViewArr[9].setImageResource(R.drawable.ic_sprint);
+        }
         //setting image position
 
         // imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));

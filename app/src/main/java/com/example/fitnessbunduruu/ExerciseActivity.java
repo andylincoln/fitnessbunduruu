@@ -19,9 +19,6 @@ import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import java.io.FileDescriptor;
-import java.io.IOException;
-
 
 public class ExerciseActivity extends Activity {
 
@@ -57,18 +54,18 @@ public class ExerciseActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
-        mLayout               = (TableLayout)findViewById(R.id.tableLayout);
+        mLayout = (TableLayout) findViewById(R.id.tableLayout);
 
-        mTitleView            = (TextView) findViewById(R.id.titleView);
-        mWorkoutTypeView      = (TextView) findViewById(R.id.workoutTypeView);
-        mCountdownView        = (TextView) findViewById(R.id.countdownView);
+        mTitleView = (TextView) findViewById(R.id.titleView);
+        mWorkoutTypeView = (TextView) findViewById(R.id.workoutTypeView);
+        mCountdownView = (TextView) findViewById(R.id.countdownView);
 
         mWorkoutTypeImageView = (ImageView) findViewById(R.id.workoutTypeImageView);
 
-        mStartStopButton      = (Button) findViewById(R.id.startStopButton);
+        mStartStopButton = (Button) findViewById(R.id.startStopButton);
 
-        mGoFD                 = getResources().openRawResourceFd(R.raw.go);
-        mStopFD               = getResources().openRawResourceFd(R.raw.stop);
+        mGoFD = getResources().openRawResourceFd(R.raw.go);
+        mStopFD = getResources().openRawResourceFd(R.raw.stop);
 
         Bundle extras = getIntent().getExtras();
 
@@ -76,7 +73,8 @@ public class ExerciseActivity extends Activity {
         mTitleView.setText(extras.getString(extraTag));
         // Set the specific type of workout depending on which radio button user selected.
         // This is a static value atm for the purposes of presentation.
-        mWorkoutTypeView.setText("Sprint");
+
+        mWorkoutTypeView.setText("Sprint"); // TODO: Change this so it actually computes it. Preferably through strings file
 
         // Set the image for the specific workout the user selected.
         // This is static for the time being.
@@ -87,7 +85,7 @@ public class ExerciseActivity extends Activity {
         mStartStopButton.setTextColor(Color.parseColor("#01d410")); // green
 
         mMediaPlayerGo = MediaPlayer.create(ExerciseActivity.this, R.raw.go);
-        mMediaPlayer   = MediaPlayer.create(ExerciseActivity.this, R.raw.stop);
+        mMediaPlayer = MediaPlayer.create(ExerciseActivity.this, R.raw.stop);
 
         // Gots to do some shiftying of my code around.
         final CountDownTimer countdownTimer = new CountDownTimer(5000, 1) {
@@ -110,10 +108,17 @@ public class ExerciseActivity extends Activity {
                 // Explanation:
                 // http://stackoverflow.com/questions/3289038/play-audio-file-from-the-assets-directory
 
-                try                   { mMediaPlayer.setDataSource(mStopFD.getFileDescriptor(), mStopFD.getStartOffset(), mStopFD.getLength()); }
-                catch (Exception exc) { Log.i(TAG, "finish set data exc: " + exc.toString()); }
-                try                     { mMediaPlayer.prepare(); }
-                catch (Exception exc) { Log.i(TAG, "finish prepare exc: " + exc.toString()); };
+                try {
+                    mMediaPlayer.setDataSource(mStopFD.getFileDescriptor(), mStopFD.getStartOffset(), mStopFD.getLength());
+                } catch (Exception exc) {
+                    Log.i(TAG, "finish set data exc: " + exc.toString());
+                }
+                try {
+                    mMediaPlayer.prepare();
+                } catch (Exception exc) {
+                    Log.i(TAG, "finish prepare exc: " + exc.toString());
+                }
+
 
 
                 // Am I playing the correct file(s)?
@@ -160,10 +165,16 @@ public class ExerciseActivity extends Activity {
                     // Explanation:
                     // http://stackoverflow.com/questions/3289038/play-audio-file-from-the-assets-directory
 
-                    try                     { mMediaPlayerGo.setDataSource(mGoFD.getFileDescriptor(), mGoFD.getStartOffset(), mGoFD.getLength()); }
-                    catch (Exception IOE) { Log.i(TAG, "click set data exc: " + IOE.toString()); }
-                    try                     { mMediaPlayerGo.prepare(); }
-                    catch (Exception IOE) { Log.i(TAG, "click prepare exc: " + IOE.toString()); };
+                    try {
+                        mMediaPlayerGo.setDataSource(mGoFD.getFileDescriptor(), mGoFD.getStartOffset(), mGoFD.getLength());
+                    } catch (Exception IOE) {
+                        Log.i(TAG, "click set data exc: " + IOE.toString());
+                    }
+                    try {
+                        mMediaPlayerGo.prepare();
+                    } catch (Exception IOE) {
+                        Log.i(TAG, "click prepare exc: " + IOE.toString());
+                    }
 
                     mMediaPlayerGo.start();
 
