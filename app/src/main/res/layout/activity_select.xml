@@ -18,7 +18,6 @@
         android:id="@+id/selectTitleView"
         android:gravity="center_horizontal"
         android:textSize="40sp"
-        android:textAlignment="center"
         android:layout_marginTop="30dp"
         android:textIsSelectable="false"
         android:textStyle="italic"
@@ -36,118 +35,83 @@
 
     <!-- so far the grid has to wrap_content in order to center items properly... -->
 
-    <GridLayout
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alignmentMode="alignMargins"
         android:weightSum="1"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/selectGridLayout"
-        android:columnCount="2"
-        android:rowCount="5"
+        android:id="@+id/selectTableLayout"
         android:layout_gravity="center">
 
 
         <!-- The following ImageViews must have 'adjustViewBounds' set to TRUE in order to resize properly to fit the screen. -->
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="false">
 
-            android:layout_margin="@dimen/activity_vertical_margin"
-            />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/exerciseCheckBox" />
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView2"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            />
+            <ImageView
+                android:id="@+id/exerciseSelectImageView"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView3"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            />
+                android:longClickable="false"
+                android:scaleType="centerInside" />
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView4"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:id="@+id/exerciseCheckBox2" />
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView5"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            />
+            <ImageView
+                android:id="@+id/exerciseSelectImageView2"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_column="2" />
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView6"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"/>
+        </TableRow>
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView7"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"/>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView8"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:id="@+id/exerciseCheckBox3" />
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView9"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"/>
+            <ImageView
+                android:id="@+id/exerciseSelectImageView3"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center" />
 
-        <ImageView
-            android:id="@+id/exerciseSelectImageView10"
-            android:maxHeight="50dp"
-            android:maxWidth="50dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:id="@+id/exerciseCheckBox4" />
+            <ImageView
+                android:id="@+id/exerciseSelectImageView4"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:layout_column="2" />
+        </TableRow>
 
-    </GridLayout>
+    </TableLayout>
 
     <Button
         android:layout_width="fill_parent"
@@ -158,9 +122,9 @@
         android:gravity="center_horizontal"
         android:textColor="@android:color/darker_gray"
         android:textSize="40sp"
-        android:textAlignment="center"
         android:layout_marginTop="45dp"
         android:textIsSelectable="false"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:singleLine="true" />
 
 </LinearLayout>

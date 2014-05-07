@@ -4,20 +4,16 @@ package com.example.fitnessbunduruu;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridLayout;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
-
-
-// test
 
 public class SelectActivity extends Activity {
 
@@ -30,13 +26,14 @@ public class SelectActivity extends Activity {
     private static String mCategory;
 
     private LinearLayout mActivityLayout;
-    private GridLayout mSelectLayout;
+    private TableLayout mSelectTableLayout;
 
     private Button mBeginButton;
 
     private int mIndex;
 
     private ImageView imageViewArr[];
+    private CheckBox checkBoxes[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +42,11 @@ public class SelectActivity extends Activity {
 
         Log.i(TAG, "SelectActivity OnCreate");
         imageViewArr = new ImageView[4];
+        checkBoxes = new CheckBox[4];
 
         mTitleView = (TextView) findViewById(R.id.selectTitleView);
         mActivityLayout = (LinearLayout) findViewById(R.id.selectLayout);
-        mSelectLayout = (GridLayout) findViewById(R.id.selectGridLayout);
+        mSelectTableLayout = (TableLayout) findViewById(R.id.selectTableLayout);
 
         mBeginButton = (Button) findViewById(R.id.beginButton);
 
@@ -58,9 +56,6 @@ public class SelectActivity extends Activity {
 
         // Set title depending on which radio button user selected.
         mTitleView.setText(mCategory);
-
-        // Can we easily highlight selected images?
-        // Blue Highlight: 00a4f9
 
         populateSelectGrid();
 
@@ -94,8 +89,19 @@ public class SelectActivity extends Activity {
         imageViewArr[2] = (ImageView) findViewById(R.id.exerciseSelectImageView3);
         imageViewArr[3] = (ImageView) findViewById(R.id.exerciseSelectImageView4);
 
+        checkBoxes[0] = (CheckBox) findViewById(R.id.exerciseCheckBox);
+        checkBoxes[1] = (CheckBox) findViewById(R.id.exerciseCheckBox2);
+        checkBoxes[2] = (CheckBox) findViewById(R.id.exerciseCheckBox3);
+        checkBoxes[3] = (CheckBox) findViewById(R.id.exerciseCheckBox4);
+
+        String[] exerciseNames;
         if (mCategory.equals("Strength")) {
 
+            exerciseNames = getResources().getStringArray(R.array.StrengthCategory);
+
+            for (int i = 0; i < exerciseNames.length; i++) {
+                checkBoxes[i].setText(exerciseNames[i]);
+            }
             //setting image resource
 
             imageViewArr[0].setImageResource(R.drawable.ic_weights);
@@ -104,38 +110,19 @@ public class SelectActivity extends Activity {
             imageViewArr[3].setImageResource(R.drawable.ic_pushups);
 
         } else { // Cardio
+
+            exerciseNames = getResources().getStringArray(R.array.CardioCategory);
+
+            for (int i = 0; i < exerciseNames.length; i++) {
+                checkBoxes[i].setText(exerciseNames[i]);
+            }
+
             imageViewArr[0].setImageResource(R.drawable.ic_sprint);
             imageViewArr[1].setImageResource(R.drawable.ic_jump_rope);
             imageViewArr[2].setImageResource(R.drawable.ic_treadmill);
             imageViewArr[3].setImageResource(R.drawable.ic_running);
         }
-        //setting image position
-
-        // imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
-
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (imageViewArr[0] == v) {
-                    imageViewArr[0].setColorFilter(Color.BLUE, PorterDuff.Mode.LIGHTEN);
-                } else if (imageViewArr[1] == v) {
-                    imageViewArr[1].setColorFilter(Color.BLUE, PorterDuff.Mode.LIGHTEN);
-                } else if (imageViewArr[2] == v) {
-                    imageViewArr[2].setColorFilter(Color.BLUE, PorterDuff.Mode.LIGHTEN);
-                } else if (imageViewArr[3] == v) {
-                    imageViewArr[3].setColorFilter(Color.BLUE, PorterDuff.Mode.LIGHTEN);
-                }
-
-                // add to a list or mark remaining # to select?
-            }
-        };
-
-        imageViewArr[0].setOnClickListener(listener);
-        imageViewArr[1].setOnClickListener(listener);
-        imageViewArr[2].setOnClickListener(listener);
-        imageViewArr[3].setOnClickListener(listener);
-
+        //TODO Will add the ability to chain workouts next
     }
 
     @Override
