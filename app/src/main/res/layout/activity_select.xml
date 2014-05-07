@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/beginButton"
-        android:text="Go"
+        android:text="@string/Start"
         android:gravity="center_horizontal"
         android:textColor="@android:color/darker_gray"
         android:textSize="40sp"

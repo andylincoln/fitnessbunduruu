@@ -14,7 +14,8 @@
     <!--Exercise Activity-->
     <string name="exercisePrompt">Choose your exercise</string>
 
-
+    <string name="Start">Start</string>
+    
     <!-- Standalone for access by all-->
     <string name="cardio">Cardio</string>
     <string name="strength">Strength</string>
