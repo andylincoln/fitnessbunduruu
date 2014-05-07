@@ -7,9 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import java.util.Random;
 
@@ -21,11 +20,6 @@ public class MainActivity extends Activity {
 
     private String[] EXERCISE_CATEGORIES;
 
-    private TextView mTextExercise;
-    private Button mButtonExercise;
-
-    private RadioGroup mCategoryGroup;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,54 +27,54 @@ public class MainActivity extends Activity {
 
         EXERCISE_CATEGORIES = getResources().getStringArray(R.array.categories);
 
-        mCategoryGroup = (RadioGroup) findViewById(R.id.CategoryGroup);
+        Button cardioButton = (Button) findViewById(R.id.buttonCardio);
+        Button strengthButton = (Button) findViewById(R.id.buttonStrength);
+        Button randomButton = (Button) findViewById(R.id.buttonRandom);
 
-        mCategoryGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        cardioButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            public void onClick(View v) {
 
+                String selectedCategory = getResources().getString(R.string.cardio);
                 Intent intent;
 
-                switch (checkedId) {
-                    case R.id.buttonCardio:
+                intent = new Intent(getApplicationContext(), SelectActivity.class);
+                intent.putExtra(extraTag, selectedCategory);
 
-                        // In order to select multiple exercises for a group,
-                        // the main activity will start a group selection activity
+                startActivity(intent);
+            }
+        });
 
-                        // intent = new Intent(getApplicationContext(), ExerciseActivity.class);
-                        intent = new Intent(getApplicationContext(), SelectActivity.class);
-                        intent.putExtra(extraTag, getResources().getString(R.string.cardio));
+        strengthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                        startActivity(intent);
+                String selectedCategory = getResources().getString(R.string.strength);
+                Intent intent;
 
-                        break;
-                    case R.id.buttonStrength:
+                intent = new Intent(getApplicationContext(), SelectActivity.class);
 
-                        // intent = new Intent(getApplicationContext(), ExerciseActivity.class);
-                        intent = new Intent(getApplicationContext(), SelectActivity.class);
-                        intent.putExtra(extraTag, getResources().getString(R.string.strength));
+                intent.putExtra(extraTag, selectedCategory);
+                startActivity(intent);
+            }
+        });
 
-                        startActivity(intent);
+        randomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                        break;
+                String selectedCategory;
+                Intent intent;
 
-                    /*
-                    case R.id.buttonRandom:
+                Random random = new Random();
 
-                        String selectedCategory;
+                int index = random.nextInt(EXERCISE_CATEGORIES.length);
+                selectedCategory = EXERCISE_CATEGORIES[index];
 
-                        Random random = new Random();
-                        int index = random.nextInt(EXERCISE_CATEGORIES.length);
-                        selectedCategory = EXERCISE_CATEGORIES[index];
+                intent = new Intent(getApplicationContext(), SelectActivity.class);
+                intent.putExtra(extraTag, selectedCategory);
 
-                        intent = new Intent(getApplicationContext(), ExerciseActivity.class);
-                        intent.putExtra(extraTag, selectedCategory);
-
-                        startActivity(intent);
-
-                        break;
-                     */
-                }
+                startActivity(intent);
             }
         });
 
