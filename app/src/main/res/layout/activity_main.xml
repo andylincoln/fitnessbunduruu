@@ -45,8 +45,7 @@
             android:enabled="true"
             android:textColor="@android:color/holo_orange_dark"
             android:singleLine="true"
-            android:layout_marginTop="96dp"
-            />
+            android:layout_marginTop="96dp" />
 
         <Button
             android:drawableRight="@drawable/ic_strength"
