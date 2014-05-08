@@ -19,12 +19,16 @@ import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.example.fitnessbunduruu.types.ExerciseGroup;
+
 
 public class ExerciseActivity extends Activity {
 
-    public final String TAG = "FinalProject";
+    public static final String TAG = "FinalProject";
 
-    public String extraTag = "Category";
+    public static final String extraTag = "Category";
+
+    public static final String exerciseGroupTag = "ExerciseGroup";
 
     private TextView mCountdownView;
 
@@ -68,6 +72,15 @@ public class ExerciseActivity extends Activity {
         mStopFD = getResources().openRawResourceFd(R.raw.stop);
 
         Bundle extras = getIntent().getExtras();
+
+        // Determine workouts to display on screen based on incoming ExerciseGroup.
+        ExerciseGroup mGroup = (ExerciseGroup) getIntent().getParcelableExtra(exerciseGroupTag);
+
+        // Verify that this activity has received the ExerciseGroup and its Exercises.
+        // Log.i(TAG, "Group has name: " + mGroup.getName() + " with size: " + Integer.toString(mGroup.getSize()));
+        //for (int i = 0; i < mGroup.getSize(); i++) {
+        //      Log.i(TAG, "Workout: " + mGroup.getName() + " has exercise:" + mGroup.getExerciseAt(i).getName());
+        //}
 
         // Set title depending on which radio button user selected.
         mTitleView.setText(extras.getString(extraTag));
@@ -139,8 +152,6 @@ public class ExerciseActivity extends Activity {
         //
         // This works for the time being but there needs to be additionally defined behavior if
         // the user stops a workout before it completes.
-        //
-        // There also exists an on error listener, not sure if its really necessary to implement for my purposes.
         mMediaPlayerGo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
                 countdownTimer.start();
@@ -166,7 +177,13 @@ public class ExerciseActivity extends Activity {
                     // http://stackoverflow.com/questions/3289038/play-audio-file-from-the-assets-directory
 
                     try {
-                        mMediaPlayerGo.setDataSource(mGoFD.getFileDescriptor(), mGoFD.getStartOffset(), mGoFD.getLength());
+                        Log.i(TAG, "start offset = " + mGoFD.getStartOffset());
+                        Log.i(TAG, "length       = " + mGoFD.getLength());
+
+                        //mMediaPlayerGo.setDataSource(mGoFD.getFileDescriptor(), mGoFD.getStartOffset(), mGoFD.getLength());
+                        // Quick workaround to trim the 'start' sound, play 80,000 bytes of file.
+                        mMediaPlayerGo.setDataSource(mGoFD.getFileDescriptor(), mGoFD.getStartOffset(), 80000);
+
                     } catch (Exception IOE) {
                         Log.i(TAG, "click set data exc: " + IOE.toString());
                     }

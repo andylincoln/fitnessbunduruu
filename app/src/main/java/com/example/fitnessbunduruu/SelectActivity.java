@@ -5,6 +5,7 @@ package com.example.fitnessbunduruu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -15,11 +16,16 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.example.fitnessbunduruu.types.Exercise;
+import com.example.fitnessbunduruu.types.ExerciseGroup;
+
 public class SelectActivity extends Activity {
 
-    public final String TAG = "FinalProject";
+    public static final String TAG = "FinalProject";
 
-    public String extraTag = "Category";
+    public static final String extraTag = "Category";
+
+    public static final String exerciseGroupTag = "ExerciseGroup";
 
     private static TextView mTitleView;
 
@@ -59,16 +65,49 @@ public class SelectActivity extends Activity {
 
         populateSelectGrid();
 
-        // Construct a Workout Group based on user selected exercises.
 
+        // User clicks the start button to start a workout.
         mBeginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
                 Intent intent;
 
-                // Start a group of workouts.
+                // Prepare to launch the Exercise Activity.
                 intent = new Intent(getApplicationContext(), ExerciseActivity.class);
                 intent.putExtra(extraTag, getResources().getString(R.string.cardio));
+
+                // Create an exercise group depending upon which checkboxes are selected.
+                ExerciseGroup group = new ExerciseGroup(mCategory);
+
+                String[] exerciseNames;
+
+                Exercise.workoutType type;
+
+                if (mCategory.equals(getResources().getString(R.string.cardio))) {
+
+                    exerciseNames  = getResources().getStringArray(R.array.CardioCategory);
+                    type = Exercise.workoutType.CARDIO;
+
+                }
+                else {
+
+                    exerciseNames  = getResources().getStringArray(R.array.StrengthCategory);
+                    type = Exercise.workoutType.STRENGTH;
+
+                }
+
+                for (int i = 0; i < exerciseNames.length; i++) {
+
+                    // Create an Exercise for each Checkbox, and add it to the group.
+                    if (checkBoxes[i].isChecked()) {
+
+                        group.add(new Exercise(type, exerciseNames[i], 0, 0, 0));
+
+                    }
+
+                }
+
+                intent.putExtra(exerciseGroupTag, (Parcelable)group);
 
                 startActivity(intent);
             }
