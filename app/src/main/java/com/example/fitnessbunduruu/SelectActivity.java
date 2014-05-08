@@ -105,8 +105,8 @@ public class SelectActivity extends Activity {
             //setting image resource
 
             imageViewArr[0].setImageResource(R.drawable.ic_weights);
-            imageViewArr[1].setImageResource(R.drawable.ic_large_weights);
-            imageViewArr[2].setImageResource(R.drawable.ic_pull_ups);
+            imageViewArr[1].setImageResource(R.drawable.ic_pull_ups);
+            imageViewArr[2].setImageResource(R.drawable.ic_large_weights);
             imageViewArr[3].setImageResource(R.drawable.ic_pushups);
 
         } else { // Cardio

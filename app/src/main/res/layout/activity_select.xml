@@ -53,26 +53,30 @@
             android:focusable="false">
 
             <CheckBox
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:id="@+id/exerciseCheckBox" />
 
             <ImageView
+                android:layout_weight="1"
+
                 android:id="@+id/exerciseSelectImageView"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center"
-
                 android:longClickable="false"
                 android:scaleType="centerInside" />
 
             <CheckBox
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"
                 android:id="@+id/exerciseCheckBox2" />
 
             <ImageView
+                android:layout_weight="1"
                 android:id="@+id/exerciseSelectImageView2"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center"
@@ -87,23 +91,28 @@
             android:layout_height="wrap_content">
 
             <CheckBox
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3"
                 android:id="@+id/exerciseCheckBox3" />
 
             <ImageView
+                android:layout_weight="1"
                 android:id="@+id/exerciseSelectImageView3"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center" />
 
             <CheckBox
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4"
                 android:id="@+id/exerciseCheckBox4" />
+
             <ImageView
+                android:layout_weight="1"
                 android:id="@+id/exerciseSelectImageView4"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
