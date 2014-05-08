@@ -42,7 +42,7 @@
     <string-array name="StrengthCategory">
         <item name="Weights">Weights</item>
         <item name="Pull Ups">Pull Ups</item>
-        <item name="Large Weights">Large Weights</item>
+        <item name="Large Weights">Lrg Weights</item>
         <item name="PushUps">Push ups</item>
     </string-array>
 
