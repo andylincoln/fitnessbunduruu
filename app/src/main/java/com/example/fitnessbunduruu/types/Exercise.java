@@ -6,30 +6,31 @@ package com.example.fitnessbunduruu.types;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Exercise implements Parcelable{
+public class Exercise implements Parcelable {
     // Implement the Parcelable class so we can pass Exercise object instances between activities.
 
-    public enum workoutType { CARDIO , STRENGTH }
+    public enum workoutType {CARDIO, STRENGTH}
 
     private workoutType type;
     private String name;
+    private int mImageResourceNum;
 
     private int[] difficulty_settings;
 
     /**
-     *
      * @param type
      * @param name
      * @param easy
      * @param medium
      * @param hard
      */
-    public Exercise(workoutType type, String name, int easy, int medium, int hard) {
+    public Exercise(workoutType type, String name, int imageResource, int easy, int medium, int hard) {
 
         this.type = type;
         this.name = name;
+        this.mImageResourceNum = imageResource;
 
-        difficulty_settings = new int[] { easy, medium, hard };
+        difficulty_settings = new int[]{easy, medium, hard};
     }
 
     // BEGIN FUNCTIONS REQUIRED TO IMPLEMENT PARCELABLE.
@@ -37,6 +38,7 @@ public class Exercise implements Parcelable{
         // This constructor is called in the activity receiving the Exercise object.
         // Unpackage the data.
         this.name = in.readString();
+        this.mImageResourceNum = in.readInt();
 
     }
 
@@ -48,8 +50,8 @@ public class Exercise implements Parcelable{
         // This overloaded function is called in the activity sending the Exercise object.
         // Package the data for transport.
         out.writeString(this.name);
+        out.writeInt(this.mImageResourceNum);
     }
-
 
     public static final Parcelable.Creator<Exercise> CREATOR
             = new Parcelable.Creator<Exercise>() {
@@ -68,6 +70,10 @@ public class Exercise implements Parcelable{
 
     public workoutType getType() {
         return this.type;
+    }
+
+    public int getImageResourceNum() {
+        return this.mImageResourceNum;
     }
 
     public int getEasyLength() {

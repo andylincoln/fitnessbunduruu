@@ -1,4 +1,4 @@
-/* SelectActivity.java */
+// SelectActivity.java
 
 package com.example.fitnessbunduruu;
 
@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fitnessbunduruu.types.Exercise;
 import com.example.fitnessbunduruu.types.ExerciseGroup;
@@ -65,7 +66,6 @@ public class SelectActivity extends Activity {
 
         populateSelectGrid();
 
-
         // User clicks the start button to start a workout.
         mBeginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -74,7 +74,6 @@ public class SelectActivity extends Activity {
 
                 // Prepare to launch the Exercise Activity.
                 intent = new Intent(getApplicationContext(), ExerciseActivity.class);
-                intent.putExtra(extraTag, getResources().getString(R.string.cardio));
 
                 // Create an exercise group depending upon which checkboxes are selected.
                 ExerciseGroup group = new ExerciseGroup(mCategory);
@@ -83,16 +82,27 @@ public class SelectActivity extends Activity {
 
                 Exercise.workoutType type;
 
+                int[] imageResourceNumbers;
+
+                // Stuff the workout type, exercise names, and exercise images into a parcelable
+                // for the ExerciseActivity to handle displaying.
                 if (mCategory.equals(getResources().getString(R.string.cardio))) {
 
-                    exerciseNames  = getResources().getStringArray(R.array.CardioCategory);
+                    intent.putExtra(extraTag, getResources().getString(R.string.cardio));
+
+                    exerciseNames = getResources().getStringArray(R.array.CardioCategory);
                     type = Exercise.workoutType.CARDIO;
+                    // These must be synced with arrays of strings in strings files...
+                    imageResourceNumbers = new int[]{R.drawable.ic_sprint, R.drawable.ic_jump_rope, R.drawable.ic_treadmill, R.drawable.ic_running};
 
-                }
-                else {
+                } else {
 
-                    exerciseNames  = getResources().getStringArray(R.array.StrengthCategory);
+                    intent.putExtra(extraTag, getResources().getString(R.string.strength));
+
+                    exerciseNames = getResources().getStringArray(R.array.StrengthCategory);
                     type = Exercise.workoutType.STRENGTH;
+                    // These must be synced with arrays of strings in strings files...
+                    imageResourceNumbers = new int[]{R.drawable.ic_weights, R.drawable.ic_pull_ups, R.drawable.ic_large_weights, R.drawable.ic_pushups};
 
                 }
 
@@ -101,15 +111,23 @@ public class SelectActivity extends Activity {
                     // Create an Exercise for each Checkbox, and add it to the group.
                     if (checkBoxes[i].isChecked()) {
 
-                        group.add(new Exercise(type, exerciseNames[i], 0, 0, 0));
+                        group.add(new Exercise(type, exerciseNames[i], imageResourceNumbers[i], 0, 0, 0));
 
                     }
 
                 }
 
-                intent.putExtra(exerciseGroupTag, (Parcelable)group);
+                if (group.getSize() == 0) {
 
-                startActivity(intent);
+                    // Do not start the next ExerciseActivity if the user has not selected any exercises.
+                    Toast.makeText(getApplicationContext(), "Please select at least one exercise.", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    intent.putExtra(exerciseGroupTag, (Parcelable) group);
+
+                    startActivity(intent);
+                }
             }
         });
 
@@ -118,7 +136,6 @@ public class SelectActivity extends Activity {
     private void populateSelectGrid() {
 
         //ImageView Setup
-
 
         // Setting to four each until we have more.
         // Filling the screen with redundancies is just confusing for users
@@ -161,7 +178,6 @@ public class SelectActivity extends Activity {
             imageViewArr[2].setImageResource(R.drawable.ic_treadmill);
             imageViewArr[3].setImageResource(R.drawable.ic_running);
         }
-        //TODO Will add the ability to chain workouts next
     }
 
     @Override
@@ -170,5 +186,4 @@ public class SelectActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
 }
